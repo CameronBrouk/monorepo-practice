@@ -456,6 +456,11 @@
       "packageName": "@monorepo-practice/interfaces",
       "projectFolder": "libraries/interfaces",
       "reviewCategory": "production"
+    },
+    {
+      "packageName": "@monorepo-practice/vite",
+      "projectFolder": "apps/vite-app",
+      "reviewCategory": "production"
     }
   ]
 }
