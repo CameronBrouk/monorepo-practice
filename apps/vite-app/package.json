@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "start": "vite",
+    "lint": "eslint src/**/*.ts* --fix",
     "build": "tsc && vite build",
     "preview": "vite preview",
   },
@@ -15,7 +16,71 @@
     "@types/react": "^17.0.33",
     "@types/react-dom": "^17.0.10",
     "@vitejs/plugin-react": "~1.2.0",
+    "eslint": "^8.9.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "eslint-plugin-unused-imports": "~2.0.0",
+    "eslint-plugin-prettier": "~4.0.0",
+    "eslint-config-prettier": "~8.4.0",
+    "prettier": "^2.5.1",
     "typescript": "^4.5.4",
     "vite": "^2.8.0"
+  },
+  "eslintConfig": {
+    "ignorePatterns": [
+      "node_modules",
+      "dist",
+      "**/src/**/*.spec.*",
+      "**/src/**/*.test.*"
+    ],
+    "root": true,
+    "env": {
+      "browser": true,
+      "es2021": true
+    },
+    "extends": [
+      "plugin:react/recommended",
+      "eslint:recommended"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "ecmaFeatures": {
+        "jsx": true
+      },
+      "ecmaVersion": "latest",
+      "sourceType": "module"
+    },
+    "plugins": [
+      "react",
+      "@typescript-eslint",
+      "prettier",
+      "unused-imports"
+    ],
+    "rules": {
+      "react/react-in-jsx-scope": "off",
+      "react/jsx-filename-extension": [
+        1,
+        {
+          "extensions": [
+            ".ts",
+            ".tsx"
+          ]
+        }
+      ],
+      "no-unused-vars": "off",
+      "unused-imports/no-unused-imports": "error",
+      "unused-imports/no-unused-vars": [
+        "warn",
+        {
+          "vars": "all",
+          "varsIgnorePattern": "^_",
+          "args": "after-used",
+          "argsIgnorePattern": "^_"
+        }
+      ]
+    }
   },
 }
