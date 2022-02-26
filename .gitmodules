@@ -1,0 +1,3 @@
+[submodule "libraries/interfaces"]
+	path = libraries/interfaces
+	url = git@github.com:CameronBrouk/practice-interfaces-build.git
