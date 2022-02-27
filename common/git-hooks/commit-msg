@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo -e "\e[32m--- Checking Commit Message for Correctness ---\e[0m";
+echo -e "\e[32m--- PHASE ONE: Checking Commit Message for Correctness ---\e[0m";
 
 cnt=0
 while IFS='' read -r line || [[ -n "$line" ]]; do
@@ -8,12 +8,15 @@ while IFS='' read -r line || [[ -n "$line" ]]; do
   length=${#line}
   if [ $cnt -eq 1 ]; then
     # Checking if subject exceeds 50 characters
+    echo -e "\e[32m -> CHECK #1:  Subject is under 50 characters \e[0m";
     if [ $length -gt 50 ]; then
       echo -e "\e[31m*** Your subject line exceeds 50 characters ***\e[0m";
       exit 1
     fi
     i=$(($length-1))
     last_char=${line:$i:1}
+
+    echo -e "\e[32m -> CHECK #2:  Last character has no punctuation \e[0m";
     # Last character must not have a punctuation
     if [[ ! $last_char =~ [0-9a-zA-Z] ]]; then
       echo -e "\e[31m*** Last character of the subject line must not have punctuation ***\e[0m";
@@ -21,12 +24,14 @@ while IFS='' read -r line || [[ -n "$line" ]]; do
     fi
   elif [ $cnt -eq 2 ]; then
     # Subject must be followed by a blank line
+    echo -e "\e[32m -> CHECK #3: Subject is followed by a blank line \e[0m";
     if [ $length -ne 0 ]; then
       echo -e "\e[31m*** Your subject line follows a non-empty line. Subject lines should always be followed by a blank line ***\e[0m";
       exit 1
     fi
   else
     # Any line in body must not exceed 72 characters
+    echo -e "\e[32m -> CHECK #4: No line exceeds 72 characters \e[0m";
     if [ $length -gt 72 ]; then
       echo -e "\e[31m*** The line \"$line\" exceeds 72 characters ***\e[0m";
       exit 1
@@ -36,15 +41,25 @@ done < "$1"
 
 
 #echo -e "\e[32mPHASE TWO. Testing if JIRA reference exists.\e[0m"
-echo -e "\e[32mPHASE TWO. Checking if Commit begins with action word.\e[0m"
+
+echo -e "\e[32m--- PHASE TWO. Checking if Commit begins with action word. ---\e[0m"
 
 export MESSAGE=$(<$1)
 
-if [ ! [$MESSAGE == Add*] || [$MESSAGE == Remove*] || [$MESSAGE == Deprecate*] || [$MESSAGE == Fix*] || [$MESSAGE == Improve*] || [$MESSAGE == Update*] || [$MESSAGE == Begin*] ]; then
+if [ [ ! $MESSAGE == Add*] ]; then
   echo -e "\e[31m*** Commit Must Begin with Add|Remove|Deprecate|Fix|Improve|Update|Begin ***\e[0m";
   exit 1
 else
   echo -e "Success"
+fi
+
+
+# if [ ! [$MESSAGE == Add*] || [$MESSAGE == Remove*] || [$MESSAGE == Deprecate*] || [$MESSAGE == Fix*] || [$MESSAGE == Improve*] || [$MESSAGE == Update*] || [$MESSAGE == Begin*] ]; then
+#   echo -e "\e[31m*** Commit Must Begin with Add|Remove|Deprecate|Fix|Improve|Update|Begin ***\e[0m";
+#   exit 1
+# else
+#   echo -e "Success"
+# fi
 # export JIRA_ISSUE_TAG='TDETS-[0-9]+'
 
 # if [[ $MESSAGE =~ $JIRA_ISSUE_TAG ]]; then
