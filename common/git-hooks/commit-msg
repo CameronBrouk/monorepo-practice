@@ -37,7 +37,13 @@ done < "$1"
 
 #echo -e "\e[32mPHASE TWO. Testing if JIRA reference exists.\e[0m"
 
-# export MESSAGE=$(<$1)
+export MESSAGE=$(<$1)
+
+if [[ $MESSAGE == (Add|Remove|Deprecate|Fix|Improve|Update|Begin)* ]]; then   # True if $a starts with a "z" (wildcard matching).
+  echo -e "\e[31m*** Commit Must Begin with Add|Remove|Deprecate|Fix|Improve|Update|Begin ***\e[0m";
+  exit 1
+else
+  echo -e "Commit "
 # export JIRA_ISSUE_TAG='TDETS-[0-9]+'
 
 # if [[ $MESSAGE =~ $JIRA_ISSUE_TAG ]]; then
