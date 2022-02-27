@@ -1,0 +1,106 @@
+#!/bin/bash
+ cf="\\033[0m"
+ red="\\033[0;31m"
+ green="\\033[0;32m"
+ yellow="\\033[0;33m"
+ purple="\\033[0;35m"
+ blue="\\033[0;34m"
+ black="\\033[0;30m"
+ magenta="\\033[0;35m"
+ cyan="\\033[0;36m"
+ lightGrey="\\033[0;37m"
+ darkGrey="\\033[0;90m"
+ lightGreen="\\033[0;92m"
+ lightYellow="\\033[0;93m"
+ lightBlue="\\033[0;94m"
+ lightMagenta="\\033[0;95m"
+ lightCyan="\\033[0;96m"
+ white="\\033[0;97m"
+
+echoImportant() {
+  message=$1
+  echo -e "===> ${cyan}${message}${cf}"
+}
+
+echoCheck() {
+  message=$1
+  echo -e "${magenta} CHECK:  ${message}${cf}";
+}
+
+echoFail() {
+   message=$1
+   echo -e "${red}===> ${cf}[${red}FAIL${cf}]:  ${message} ${red}<===${cf}"
+}
+
+echoSuccess() {
+   message=$1
+   echo -e "${green}===> ${cf}[${green}SUCCESS${cf}]:  ${green}${message} ${green}<===${cf}"
+}
+
+echoWarning() {
+   message=$1
+   echo -e "===> [${yellow}WARNING${cf}]:${message}${cf}"
+}
+
+echoImportant "Checking Commit Message for Correctness..."
+
+cnt=0
+while IFS='' read -r line || [[ -n "$line" ]]; do
+  cnt=$((cnt+1))
+  length=${#line}
+  if [ $cnt -eq 1 ]; then
+    # Checking if subject exceeds 50 characters
+    echoCheck "Subject is under 50 characters"
+    if [ $length -gt 50 ]; then
+      echoFail "Your subject line exceeds 50 characters"
+      exit 1
+    fi
+    i=$(($length-1))
+    last_char=${line:$i:1}
+
+    echoCheck "Last character has no punctuation "
+    # Last character must not have a punctuation
+    if [[ ! $last_char =~ [0-9a-zA-Z] ]]; then
+      echoFail "Last character of the subject line must not have punctuation "
+      exit 1
+    fi
+  elif [ $cnt -eq 2 ]; then
+    # Subject must be followed by a blank line
+    echoCheck "Subject is followed by a blank line"
+    if [ $length -ne 0 ]; then
+      echoFail "Your subject line follows a non-empty line. Subject lines should always be followed by a blank line "
+      exit 1
+    fi
+  else
+    # Any line in body must not exceed 72 characters
+    echoCheck "No line exceeds 72 characters "
+    if [ $length -gt 72 ]; then
+      echoFail "The line \"$line\" exceeds 72 characters"
+      exit 1
+    fi
+  fi
+done < "$1"
+
+
+echoImportant "Checking if Commit begins with action word."
+
+export MESSAGE=$(<$1)
+
+if [[  ! $MESSAGE =~ ^(Add|Remove|Fix|Deprecate|Enhance|Begin|Test|Improve|Update|Temp|Continue).* ]]; then
+  echoFail "Commit Must Begin with an action word: Add|Remove|Fix|Deprecate|Enhance|Begin|Test|Improve|Update|Continue|TEMP"
+  echo -e "${red}Aborting....${cf}"
+  exit 1
+else
+  echo -e "Success"
+  echoSuccess "committing message: ${MESSAGE}"
+fi
+
+# export JIRA_ISSUE_TAG='TDETS-[0-9]+'
+
+# if [[ $MESSAGE =~ $JIRA_ISSUE_TAG ]]; then
+#   echo -e "\e[32m--- Success. Your commit message is formatted correctly ---\e[0m";
+#   exit 0;
+# fi
+
+# echo -e "\e[31m***Oops!*** You forgot to add a JIRA issue number! eg. TDETS-1234 : <Title of Issue etc.>\e[0m";
+# exit 1;
