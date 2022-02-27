@@ -175,8 +175,7 @@
             {
               "runtime": "automatic"
             }
-          ],
-          "@babel/preset-env"
+          ]
         ]
       }
     }
