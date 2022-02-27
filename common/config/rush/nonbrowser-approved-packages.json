@@ -16,7 +16,7 @@
     },
     {
       "name": "rimraf",
-      "allowedCategories": [ "tools" ]
+      "allowedCategories": [ "production", "tools" ]
     },
     {
       "name": "typescript",

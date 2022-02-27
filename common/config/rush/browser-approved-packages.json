@@ -3,7 +3,251 @@
   "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/approved-packages.schema.json",
   "packages": [
     {
+      "name": "@babel/core",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@babel/preset-env",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@babel/preset-react",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@babel/preset-typescript",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@microsoft/rush",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@monorepo-practice/interfaces",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@storybook/addon-actions",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@storybook/addon-essentials",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@storybook/addon-interactions",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@storybook/addon-links",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@storybook/react",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@storybook/testing-library",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@testing-library/dom",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@testing-library/jest-dom",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@testing-library/react",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@testing-library/user-event",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@types/jest",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@types/react",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@types/react-dom",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@types/testing-library__jest-dom",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@typescript-eslint/eslint-plugin",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@typescript-eslint/parser",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@vitejs/plugin-react",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "autoprefixer",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "babel-jest",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "babel-loader",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "cssnano",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "eslint",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "eslint-config-airbnb",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "eslint-config-prettier",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "eslint-plugin-import",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "eslint-plugin-jsx-a11y",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "eslint-plugin-prettier",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "eslint-plugin-react",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "eslint-plugin-react-hooks",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "eslint-plugin-storybook",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "eslint-plugin-unused-imports",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "happy-dom",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "husky",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "identity-obj-proxy",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "jest",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "jest-axe",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "jest-watch-typeahead",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "jsdom",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "lint-staged",
+      "allowedCategories": [ "production" ]
+    },
+    {
       "name": "my-controls",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "node-notifier",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "postcss",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "prettier",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "prettier-eslint",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "prettier-eslint-cli",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "react",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "react-dom",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "rollup",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "storybook-builder-vite",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "tailwindcss",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "ts-jest",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "unplugin-auto-import",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "vite",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "vite-plugin-babel",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "vite-plugin-eslint",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "vitest",
       "allowedCategories": [ "production" ]
     },
     {
