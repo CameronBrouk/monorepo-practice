@@ -55,6 +55,8 @@ jspm_packages/
 # next.js build output
 .next
 
+**/**lock*
+
 # OS X temporary files
 .DS_Store
 
