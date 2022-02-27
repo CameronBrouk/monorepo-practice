@@ -36,14 +36,15 @@ done < "$1"
 
 
 #echo -e "\e[32mPHASE TWO. Testing if JIRA reference exists.\e[0m"
+echo -e "\e[32mPHASE TWO. Checking if Commit begins with action word.\e[0m"
 
 export MESSAGE=$(<$1)
 
-if [[ $MESSAGE == (Add|Remove|Deprecate|Fix|Improve|Update|Begin)* ]]; then   # True if $a starts with a "z" (wildcard matching).
+if [ ! [$MESSAGE == Add*] || [$MESSAGE == Remove*] || [$MESSAGE == Deprecate*] || [$MESSAGE == Fix*] || [$MESSAGE == Improve*] || [$MESSAGE == Update*] || [$MESSAGE == Begin*] ]; then
   echo -e "\e[31m*** Commit Must Begin with Add|Remove|Deprecate|Fix|Improve|Update|Begin ***\e[0m";
   exit 1
 else
-  echo -e "Commit "
+  echo -e "Success"
 # export JIRA_ISSUE_TAG='TDETS-[0-9]+'
 
 # if [[ $MESSAGE =~ $JIRA_ISSUE_TAG ]]; then
