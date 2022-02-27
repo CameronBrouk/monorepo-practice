@@ -10,6 +10,7 @@
     "test:vitest": "vitest --config ./vitest.config.ts",
     "test:vitest:coverage": "vitest --coverage",
     "test:vitest:prod": "vitest run",
+    "test:vitest:related": "vitest related $(git diff --name-only . | grep src | sed 's/.*(src)/\\1/')",
     "test:jest": "jest --watch",
     "test:jest:prod": "jest",
     "test:jest:coverage": "jest --coverage"
