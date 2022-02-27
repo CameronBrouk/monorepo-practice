@@ -44,6 +44,7 @@ done < "$1"
 
 echo -e "\e[32m--- PHASE TWO. Checking if Commit begins with action word. ---\e[0m"
 
+# test
 export MESSAGE=$(<$1)
 
 if [ [ ! $MESSAGE == Add*] ]; then
