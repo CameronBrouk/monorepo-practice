@@ -46,7 +46,7 @@ echo -e "\e[32m--- PHASE TWO. Checking if Commit begins with action word. ---\e[
 
 export MESSAGE=$(<$1)
 
-if [  ! $MESSAGE == Add* ]; then
+if [[  ! $MESSAGE =~ (Add|Remove|Fix|Deprecate|Begin|Test|Improve|Update|Temp)* ]]; then
   echo -e "\e[31m*** Commit Must Begin with Add|Remove|Deprecate|Fix|Improve|Update|Begin ***\e[0m";
   exit 1
 else
