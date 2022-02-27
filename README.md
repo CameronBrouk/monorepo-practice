@@ -193,53 +193,54 @@ To truly understand a mono repo, you need to understand how a single application
 - runners
   - purgeCss is often used in rollup/webpack/vite
 
-
-
 # Build Stages
+
 ## Transpile
-- description
-Change Code to JavaScript that can be understood
+
+- description Change Code to JavaScript that can be understood
 - technologies
   - babel
   - typescript
   - flow
+
 ## Pre Process / Compile
+
 - technologies
   - sass / less
   - postcsss
 
 ## Uglify / minify / optimize
-  - technologies
-    - uglifyJS
-    - terser
+
+- technologies
+  - uglifyJS
+  - terser
 
 ## Bundle
-  - Description
-    - Tree Shake -> Remove Unused Code
-    - Concat -> take all code across all files in the app and put it in a single file
-  - technologies
-    - rollup
-    - webpack
-    - vite
+
+- Description
+  - Tree Shake -> Remove Unused Code
+  - Concat -> take all code across all files in the app and put it in a single file
+- technologies
+  - rollup
+  - webpack
+  - vite
 
 ## Compress
 
 ## Organize / Analyze
-  - description
-    - Copy / Delete / Move Files
-    - Check Bundle Size
-    - Strip Unused Code(typescript types, etc.)
+
+- description
+  - Copy / Delete / Move Files
+  - Check Bundle Size
+  - Strip Unused Code(typescript types, etc.)
 
 ## Push To Github
 
 ## Publish To NPM
 
 ## Deploy
-  - heroku, firebase, netlify, etc.
 
-
-
-
+- heroku, firebase, netlify, etc.
 
 ## Top Level Config
 
@@ -254,3 +255,5 @@ Change Code to JavaScript that can be understood
 ### webpack
 
 ### vite
+
+$(git diff --name-only . | grep src | sed 's/.\*\(src\)/\1/')
