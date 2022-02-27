@@ -3,6 +3,13 @@
 # exit with non-zero status after issuing an appropriate message if
 # it wants to stop the commit.
 
+# This block of code will prevent a commit directly to the master branch
+branch="$(git rev-parse --abbrev-ref HEAD)"
+if [ "$branch" = "master" ]; then
+  echo "You can't commit directly to master branch. Please branch off and try again"
+  exit 1
+fi
+
 # this block of code will run linting and prettier scripts
 # it will automatically apply prettier changes
 # it will automatically remove all unused imports
