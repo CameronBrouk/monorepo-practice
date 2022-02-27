@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "build": "node_modules/.bin/my-build",
-    "my-bulk-command": "node_modules/.bin/my-bulk-command"
+    "my-bulk-command": "node_modules/.bin/my-bulk-command",
+    "start": "tsc --watch"
   },
   "dependencies": {
     "my-controls": "^1.0.0",
@@ -13,6 +14,7 @@
   },
   "devDependencies": {
     "my-toolchain": "^1.0.0",
-    "typescript": "^3.0.3"
+    "typescript": "^3.0.3",
+    "@monorepo-practice/interfaces": "~1.0.0"
   }
 }
