@@ -1,0 +1,49 @@
+#!/bin/bash
+
+echo -e "\e[32m--- Checking Commit Message for Correctness ---\e[0m";
+
+cnt=0
+while IFS='' read -r line || [[ -n "$line" ]]; do
+  cnt=$((cnt+1))
+  length=${#line}
+  if [ $cnt -eq 1 ]; then
+    # Checking if subject exceeds 50 characters
+    if [ $length -gt 50 ]; then
+      echo -e "\e[31m*** Your subject line exceeds 50 characters ***\e[0m";
+      exit 1
+    fi
+    i=$(($length-1))
+    last_char=${line:$i:1}
+    # Last character must not have a punctuation
+    if [[ ! $last_char =~ [0-9a-zA-Z] ]]; then
+      echo -e "\e[31m*** Last character of the subject line must not have punctuation ***\e[0m";
+      exit 1
+    fi
+  elif [ $cnt -eq 2 ]; then
+    # Subject must be followed by a blank line
+    if [ $length -ne 0 ]; then
+      echo -e "\e[31m*** Your subject line follows a non-empty line. Subject lines should always be followed by a blank line ***\e[0m";
+      exit 1
+    fi
+  else
+    # Any line in body must not exceed 72 characters
+    if [ $length -gt 72 ]; then
+      echo -e "\e[31m*** The line \"$line\" exceeds 72 characters ***\e[0m";
+      exit 1
+    fi
+  fi
+done < "$1"
+
+
+#echo -e "\e[32mPHASE TWO. Testing if JIRA reference exists.\e[0m"
+
+# export MESSAGE=$(<$1)
+# export JIRA_ISSUE_TAG='TDETS-[0-9]+'
+
+# if [[ $MESSAGE =~ $JIRA_ISSUE_TAG ]]; then
+#   echo -e "\e[32m--- Success. Your commit message is formatted correctly ---\e[0m";
+#   exit 0;
+# fi
+
+# echo -e "\e[31m***Oops!*** You forgot to add a JIRA issue number! eg. TDETS-1234 : <Title of Issue etc.>\e[0m";
+# exit 1;
