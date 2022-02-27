@@ -8,7 +8,7 @@ export function App() {
       <header>
         <span className='flex space-x-4'>
           <button onClick={() => setCount((count) => count + 1)}>count</button>
-          <p>{count} + 1</p>
+          <p>{count}</p>
         </span>
         <p>
           Edit <code>App.tsx</code> and save to test HMR updates.
