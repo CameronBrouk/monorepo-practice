@@ -11,8 +11,7 @@ export default defineConfig({
       throwOnError: true,
     }),
     react({
-      include: '**/*.tsx',
-      exclude: ['**/*.(spec|test).*'],
+      include: ['**/*.{tsx|ts}'],
       fastRefresh: process.env.NODE_ENV !== 'test',
     }),
   ],
