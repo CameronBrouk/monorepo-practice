@@ -4,7 +4,9 @@
     "useDefineForClassFields": true,
     "types": [
       "vite/client",
-      "@types/react"
+      "@types/jest",
+      "@types/react",
+      "@types/testing-library__jest-dom"
     ],
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "allowJs": false,
